@@ -1,1 +1,1 @@
-# FakeReviewAI
+# fake-review-ai
