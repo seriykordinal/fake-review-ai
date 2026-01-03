@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Fake Review Detection System</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Font: Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+  </head>
+  
+  
+  <body>
+    
+    <header class="header">
+      <div class="logo">FakeReview<span>AI</span></div>
+    </header>
+    
+    <main>
+      
+      <!-- HERO -->
+      <section class="hero">
+        <h1>Проверь отзыв на подлинность</h1>
+        <p>
+          Сервис анализа текста, который помогает выявлять фейковые
+          и заказные отзывы с помощью алгоритмов машинного обучения
+        </p>
+      </section>
+      
+      <!-- INPUT -->
+      <section class="card">
+        <label class="label">Текст отзыва</label>
+        
+        <div class="mode-switch">
+          <button class="mode-btn active" data-mode="single">
+            <i class="fa-solid fa-comment"></i>
+            Один отзыв
+          </button>
+          <button class="mode-btn" data-mode="multiple">
+            <i class="fa-solid fa-file-lines"></i>
+            Несколько отзывов
+          </button>
+        </div>
+        
+        <!-- SINGLE REVIEW -->
+        <div class="mode-content active" id="single">
+          <label class="label">Текст отзыва</label>
+          <textarea placeholder="Вставьте отзыв для проверки..."></textarea>
+        </div>
+        
+        <!-- MULTIPLE REVIEWS -->
+        <div class="mode-content" id="multiple">
+          <label class="label">Загрузите файл с отзывами</label>
+          <input type="file" accept=".txt,.csv" class="file-input">
+          <p class="hint">Поддерживаются файлы .txt и .csv</p>
+        </div>
+        
+        <button class="primary-btn">
+          <i class="fa-solid fa-magnifying-glass-chart"></i>
+          Проверить
+        </button>
+        
+        
+        
+      </section>
+      
+      <!-- RESULT -->
+      <section class="card">
+        <div class="card-title">
+      <i class="fa-solid fa-chart-simple"></i>
+      Результат анализа
+    </div>
+    
+    <div class="result">
+      <div class="score">
+        <span>Вероятность фейка</span>
+        <strong>82%</strong>
+      </div>
+      
+      <div class="badge fake">
+        <i class="fa-solid fa-triangle-exclamation"></i>
+        Подозрительный отзыв
+      </div>
+    </div>
+    
+    <div class="reasons">
+      <h4>Почему отзыв может быть фейковым:</h4>
+      <ul>
+        <li>Чрезмерная эмоциональность</li>
+        <li>Отсутствие конкретных фактов</li>
+        <li>Использование шаблонных фраз</li>
+      </ul>
+
+    </div>
+  </section>
+  
+</main>
+<!-- FOOTER -->
+<footer class="footer">
+  <i class="fa-solid fa-shield-halved"></i>
+  Сервис предназначен для аналитической оценки достоверности отзывов
+</footer>
+
+
+<script>
+  const buttons = document.querySelectorAll('.mode-btn');
+  const contents = document.querySelectorAll('.mode-content');
+
+  buttons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      buttons.forEach(b => b.classList.remove('active'));
+      contents.forEach(c => c.classList.remove('active'));
+
+      btn.classList.add('active');
+      document.getElementById(btn.dataset.mode).classList.add('active');
+    });
+  });
+
+</script>
+
+</body>
+</html>
