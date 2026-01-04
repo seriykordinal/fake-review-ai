@@ -4,6 +4,7 @@ import (
 	"bytes"
 	"context"
 	"encoding/json"
+	"log"
 	"net/http"
 )
 
@@ -29,6 +30,7 @@ func (c *mlClient) Analyze(ctx context.Context, text string) (float64, bool, err
 
 	resp, err := http.DefaultClient.Do(req)
 	if err != nil {
+		log.Print(err)
 		return 0, false, err
 	}
 	defer resp.Body.Close()
