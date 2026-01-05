@@ -1,24 +1,12 @@
-# Environment files
 .env
 config.env
 *.env
 
-# Go build
-/bin/
-/vendor/
-/*.exe
-*.out
-*.test
 
-# Python
+
 *.pyc
 __pycache__/
 
-# PowerShell
 *.ps1
 
-# IDE / OS
 .vscode/
-.idea/
-.DS_Store
-Thumbs.db
