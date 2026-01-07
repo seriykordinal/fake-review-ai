@@ -4,6 +4,8 @@ import (
 	"database/sql"
 	"log"
 	"net/http"
+	"os"
+	"path/filepath"
 
 	_ "github.com/lib/pq"
 	"github.com/seriykordinal/fake-review-ai/internal/config"
@@ -18,6 +20,13 @@ type Server struct {
 
 func NewServer(cfg *config.Config) (*Server, error) {
 
+	wd, err := os.Getwd()
+	if err != nil {
+		log.Fatal(err)
+	}
+	projectRoot := filepath.Join(wd, "..", "..")
+
+	log.Println(projectRoot + "/frontend/public")
 	db, err := sql.Open("postgres", cfg.PostgresDSN)
 
 	if err != nil {
@@ -36,6 +45,9 @@ func NewServer(cfg *config.Config) (*Server, error) {
 
 	mux := http.NewServeMux()
 	mux.Handle("/reviews", reviewHandler)
+
+	mux.Handle("/", http.FileServer(http.Dir(projectRoot+"/frontend/public")))
+	mux.Handle("/src/", http.StripPrefix("/src/", http.FileServer(http.Dir(projectRoot+"/frontend/src"))))
 
 	return &Server{
 		httpServer: &http.Server{
