@@ -3,10 +3,13 @@
   --primary-light: #e8f0ff;
   --danger: #e53935;
   --danger-bg: #fdeaea;
+  --good: #1b7f45;
+  --good-bg: #f8fafc;
   --text-main: #111827;
   --text-secondary: #6b7280;
   --border: #e5e7eb;
   --bg: #f9fafb;
+  --file-bg: #f8fafc;
   --white: #ffffff;
 }
 
@@ -139,7 +142,7 @@ textarea:focus {
   padding: 14px;
   border-radius: 10px;
   border: 1px dashed var(--border);
-  background: #f8fafc;
+  background: var(--file-bg);
 }  
 
 .hint {
@@ -151,7 +154,7 @@ textarea:focus {
 /* BUTTON */
 .primary-btn {
   background: var(--primary);
-  color: white;
+  color: var(--white);
   border: none;
   padding: 14px 20px;
   border-radius: 10px;
@@ -194,7 +197,7 @@ textarea:focus {
 
 /* REVIEW CARD */
 .review-card {
-  background: #f9fafb;
+  background: var(--bg);
   border: 1px solid var(--border);
   border-radius: 14px;
   padding: 20px;
@@ -248,8 +251,8 @@ textarea:focus {
 
 /* STATUS BADGES */
 .badge.real {
-  background: #e6f7ec;
-  color: #1b7f45;
+  background: var(--good-bg);
+  color: var(--good);
 }
 
 .badge.fake {
